@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IUser } from 'src/user/user';
 
+
+export class DateRangePickerOverviewExample {}
 export interface User {
   birth: string;
   name: string;
