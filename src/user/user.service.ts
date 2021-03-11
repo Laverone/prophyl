@@ -8,7 +8,7 @@ import { IUser } from './user';
 @Injectable({
     providedIn: 'root'
 })
-export class TableService {
+export class UserService {
     private userUrl = 'asset/user.json';
 
     constructor (private http: HttpClient) {}
@@ -32,3 +32,8 @@ export class TableService {
         return throwError(errorMessage);
     }
 }
+
+export class UserData {
+    displayedColumns: string[] = ['birth', 'name', 'surname', 'initial'];
+    userData: IUser[]= [];
+  }
