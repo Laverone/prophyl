@@ -5,16 +5,20 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DigitalclockComponent } from './digitalclock/digitalclock.component';
+import { UsertableComponent } from './usertable/usertable.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DigitalclockComponent
+    UsertableComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,11 @@ import { DigitalclockComponent } from './digitalclock/digitalclock.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

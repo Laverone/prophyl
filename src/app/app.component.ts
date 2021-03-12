@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
-import { IUser } from 'src/user/user';
+import { Component } from '@angular/core';0
 import { UserData } from 'src/user/user.service';
 import { UserService } from 'src/user/user.service';
+import {AfterViewInit, ViewChild} from '@angular/core';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 export class DateRangePickerOverviewExample {}
@@ -20,39 +23,24 @@ export interface User {
 
 
 export class AppComponent{
+  displayedColumns: string[] = ['birth', 'name', 'surname', 'initial'];
+    dataSource = new MatTableDataSource<User>(USER_DATA);
 
-  user: IUser[]=[];
-
-  selectedUser!: IUser[];
 
   constructor(private userService: UserService){
 
   };
 
-  ngOnInit(): void {
-    this.userService.getUser().subscribe({
-      next: user => {
-        this.user= user
-      },
-    })
-  
-    this.selectedUser = new Array<IUser>();
   }
 
-  getPeriodic(e:any, table:IUser)
-  {
-    if(e.target.checked)
-    {
-      this.selectedUser.push(table);
-    }
-    else
-    {
-      this.selectedUser = this.selectedUser.filter(m=>m!=table);
-    }
 
-  
 
-  }
-}
+const USER_DATA: User[] = [
+  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+ ];
 
 
