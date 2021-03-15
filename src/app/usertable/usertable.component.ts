@@ -9,25 +9,15 @@ import { UsertableDataSource, UsertableItem } from './usertable-datasource';
   templateUrl: './usertable.component.html',
   styleUrls: ['./usertable.component.scss']
 })
-export class UsertableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
-  @ViewChild(MatTable)
-  table!: MatTable<UsertableItem>;
-  dataSource: UsertableDataSource = new UsertableDataSource;
+export class UsertableComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource: UsertableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['birth', 'name','surname', 'initial'];
 
   ngOnInit() {
-    this.dataSource = new UsertableDataSource();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.dataSource = new UsertableDataSource(this.paginator, this.sort);
   }
 }

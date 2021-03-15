@@ -14,11 +14,33 @@ export interface UsertableItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: UsertableItem[] = [
-  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
-  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
-  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
-  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
-  {birth: 'DD/MM/YYYY', name: 'Nom', surname: 'Prénom', initial: 'PH'},
+  {birth: '11/08/1980', name: 'MARTIN', surname: 'Camille', initial: 'MC'},
+  {birth: '14/03/1966', name: 'BERNARD', surname: 'Evan', initial: 'BE'},
+  {birth: '12/11/2002', name: 'THOMAS', surname: 'Adrien', initial: 'TA'},
+  {birth: '24/09/1971', name: 'PETIT', surname: 'Antoine', initial: 'PA'},
+  {birth: '02/05/1992', name: 'ROBERT', surname: 'Baptiste', initial: 'RB'},
+  {birth: '08/07/1999', name: 'RICHARD', surname: 'Lena', initial: 'RL'},
+  {birth: '02/12/1987', name: 'DURAND', surname: 'Julien', initial: 'DJ'},
+  {birth: '13/10/1998', name: 'DUBOIS', surname: 'Maeva', initial: 'DM'},
+  {birth: '21/06/1975', name: 'MOREAU', surname: 'Louise', initial: 'MD'},
+  {birth: '14/07/1977', name: 'LAURENT', surname: 'Noemie', initial: 'LN'},
+  {birth: '07/01/1973', name: 'SIMON', surname: 'Jade', initial: 'SJ'},
+  {birth: '24/03/1988', name: 'MICHEL', surname: 'Laura', initial: 'ML'},
+  {birth: '22/09/1981', name: 'LEROY', surname: 'Jules', initial: 'LJ'},
+  {birth: '13/07/1995', name: 'ROUX', surname: 'Adam', initial: 'RA'},
+  {birth: '14/02/1956', name: 'DAVID', surname: 'Axel', initial: 'DA'},
+  {birth: '12/10/1994', name: 'BERTRAND', surname: 'Arthur', initial: 'BA'},
+  {birth: '24/10/2001', name: 'MOREL', surname: 'Matteo', initial: 'MM'},
+  {birth: '05/05/1996', name: 'FOURNIER', surname: 'Gabriel', initial: 'FG'},
+  {birth: '08/12/1988', name: 'GIRARD', surname: 'Raphael', initial: 'GR'},
+  {birth: '02/11/1967', name: 'BONNET', surname: 'Lucie', initial: 'BL'},
+  {birth: '13/10/1968', name: 'DUPONT', surname: 'Julie', initial: 'DJ'},
+  {birth: '21/10/1975', name: 'LAMBERT', surname: 'Vincent', initial: 'LV'},
+  {birth: '14/07/1967', name: 'FONTAINE', surname: 'Quentin', initial: 'FQ'},
+  {birth: '07/01/1983', name: 'ROUSSEAU', surname: 'Tom', initial: 'RT'},
+  {birth: '24/04/1958', name: 'VINCENT', surname: 'Romain', initial: 'VR'},
+  {birth: '22/04/1981', name: 'MULLER', surname: 'Manon', initial: 'MM'},
+  
 ];
 
 /**
@@ -28,10 +50,9 @@ const EXAMPLE_DATA: UsertableItem[] = [
  */
 export class UsertableDataSource extends DataSource<UsertableItem> {
   data: UsertableItem[] = EXAMPLE_DATA;
-  paginator: MatPaginator | undefined;
-  sort: MatSort = new MatSort;
 
-  constructor() {
+
+  constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
   }
 
@@ -45,15 +66,16 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
     // stream for the data-table to consume.
     const dataMutations = [
       observableOf(this.data),
-      this.sort.sortChange
+      this.paginator.page,
+      this.sort.sortChange,
     ];
+
+    //Set the paginators lenght
+    this.paginator.length = this.data.length;
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
     }));
-  }
-  getPagedData(arg0: UsertableItem[]): any {
-    throw new Error('Method not implemented.');
   }
 
   /**
@@ -61,6 +83,16 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
    * any open connections or free any held resources that were set up during connect.
    */
   disconnect() {}
+
+    /**
+     * Paginate the data (client-side). If you're using server-side pagination,
+     * this would be replaced by requesting the appropriate data from the server.
+    */
+  private getPagedData(data: UsertableItem[]){
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    return data.splice(startIndex, this.paginator.pageSize)
+  }
+
 
   /**
    * Sort the data (client-side). If you're using server-side sorting,
@@ -74,7 +106,8 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'birth': return compare(a.birth, b.birth, isAsc);
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'surname': return compare(a.surname, b.surname, isAsc);
         default: return 0;
       }
     });
