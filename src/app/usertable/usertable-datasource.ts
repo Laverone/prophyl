@@ -40,7 +40,6 @@ const EXAMPLE_DATA: UsertableItem[] = [
   {birth: '07/01/1983', name: 'ROUSSEAU', surname: 'Tom', initial: 'RT'},
   {birth: '24/04/1958', name: 'VINCENT', surname: 'Romain', initial: 'VR'},
   {birth: '22/04/1981', name: 'MULLER', surname: 'Manon', initial: 'MM'},
-  
 ];
 
 /**
@@ -50,7 +49,7 @@ const EXAMPLE_DATA: UsertableItem[] = [
  */
 export class UsertableDataSource extends DataSource<UsertableItem> {
   data: UsertableItem[] = EXAMPLE_DATA;
-
+ 
 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
@@ -67,15 +66,19 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
-      this.sort.sortChange,
+      this.sort.sortChange
     ];
 
-    //Set the paginators lenght
+    //set the paginators length
     this.paginator.length = this.data.length;
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
     }));
+  }
+  private getPagedData(data: UsertableItem[]) {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    return data.splice(startIndex, this.paginator.pageSize)
   }
 
   /**
@@ -83,16 +86,6 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
    * any open connections or free any held resources that were set up during connect.
    */
   disconnect() {}
-
-    /**
-     * Paginate the data (client-side). If you're using server-side pagination,
-     * this would be replaced by requesting the appropriate data from the server.
-    */
-  private getPagedData(data: UsertableItem[]){
-    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    return data.splice(startIndex, this.paginator.pageSize)
-  }
-
 
   /**
    * Sort the data (client-side). If you're using server-side sorting,
@@ -107,7 +100,6 @@ export class UsertableDataSource extends DataSource<UsertableItem> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'surname': return compare(a.surname, b.surname, isAsc);
         default: return 0;
       }
     });
