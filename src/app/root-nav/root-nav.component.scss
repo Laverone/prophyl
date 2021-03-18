@@ -26,9 +26,18 @@ background: transparent;
 
 .expansion {
   background: transparent;
-  background-color:#F5594C
+  background-color:#F5594C;
+  border-radius: 0px;
 }
 
 .title-expansion {
   text-align: center
+}
+
+.mat-expansion-panel {
+  display: flex !important;
+  flex-direction: column;
+}
+.mat-expansion-panel-header {
+  order: 2;
 }
