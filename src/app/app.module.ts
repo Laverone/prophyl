@@ -18,6 +18,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { TableAlarmComponent } from './table-alarm/table-alarm.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { TableAlarmComponent } from './table-alarm/table-alarm.component';
     MatExpansionModule,
     MatTableModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

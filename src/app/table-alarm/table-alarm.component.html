@@ -1,25 +1,51 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="outer"> 
+
+        <div class="button">
+            <button mat-raised-button style="margin:5px;" (click)="removeSelectedRows()"> Acquitter <mat-icon>done</mat-icon></button>
+        </div>
+        <div class="button">
+            <button mat-raised-button style="margin:5px;"(click)="removeAllRows()"> Tout acquitter <mat-icon>done_all</mat-icon></button>
+        </div>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+      <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
 
     <!-- Date Column -->
     <ng-container matColumnDef="date" >
-        <mat-header-cell *matHeaderCellDef><mat-radio-button> Date Heure </mat-radio-button></mat-header-cell>
-      <mat-cell *matCellDef="let element"><mat-radio-button> {{element.date}} </mat-radio-button></mat-cell>
+        <mat-header-cell *matHeaderCellDef> <h4><b>Date Heure</b></h4> </mat-header-cell>
+      <mat-cell *matCellDef="let element"><h4>{{element.date}}</h4></mat-cell>
     </ng-container>
     
     <!-- Interconnexion Column -->
     <ng-container matColumnDef="interconnexion">
-      <mat-header-cell *matHeaderCellDef> Interconnexion </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.interconnexion}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> <h4><b>Interconnexion</b></h4> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <h4>{{element.interconnexion}} </h4></mat-cell>
     </ng-container>
   
     <!-- Message Column -->
     <ng-container matColumnDef="message">
-      <mat-header-cell *matHeaderCellDef> Message </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.message}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef><h4><b>Message</b></h4></mat-header-cell>
+      <mat-cell *matCellDef="let element"><h4> {{element.message}}</h4> </mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
+</div>
   

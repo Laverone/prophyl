@@ -24,9 +24,18 @@ background: transparent;
   border: none !important;
 }
 
-.expansion {
+.alarm-expansion {
   background: transparent;
   background-color:#F5594C;
+  border-radius: 0px;
+
+  .hover{
+    background-color:#F5594C;
+  }
+}
+
+.expansion{
+  background-color: #334DA4;
   border-radius: 0px;
 }
 
@@ -41,3 +50,13 @@ background: transparent;
 .mat-expansion-panel-header {
   order: 2;
 }
+
+.paginator {
+  background-color:#F5594C;
+}
+
+.icon {
+  color: white
+}
+
+

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {SelectionModel} from '@angular/cdk/collections';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 export interface AlarmElement {
   date: string;
@@ -19,8 +24,45 @@ const ALARM_DATA: AlarmElement[] = [
   styleUrls: ['./table-alarm.component.scss']
 })
 export class TableAlarmComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'interconnexion', 'message'];
-  dataSource = ALARM_DATA;
+
+
+  displayedColumns: string[] = ['select','date', 'interconnexion', 'message'];
+  data = Object.assign( ALARM_DATA);
+  dataSource = new MatTableDataSource<AlarmElement>(ALARM_DATA);
+  selection = new SelectionModel<AlarmElement>(true, []);
+  
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  removeSelectedRows() {
+    this.selection.selected.forEach(item => {
+     let index: number = this.data.findIndex((d: AlarmElement) => d === item);
+     console.log(this.data.findIndex((d: AlarmElement) => d === item));
+     this.dataSource.data.splice(index,1);
+
+     this.dataSource = new MatTableDataSource<AlarmElement>(this.dataSource.data);
+   });
+   this.selection = new SelectionModel<AlarmElement>(true, []);
+ }
+
+ removeAllRows(){
+  this.dataSource.data=[];
+
+  this.dataSource = new MatTableDataSource<AlarmElement>(this.dataSource.data);
+   this.selection = new SelectionModel<AlarmElement>(true, []);
+ }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach((row:any) => this.selection.select(row));
+  }
 
   constructor() { }
 
@@ -30,6 +72,4 @@ export class TableAlarmComponent implements OnInit {
 
 }
 
-export class CheckboxConfigurableExample {
-  labelPosition: 'before' | 'after' = 'after';
-}
+
