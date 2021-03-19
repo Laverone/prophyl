@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 100px;
+  width: 70px;
   background-color:#2B3A9B;
 }
 
@@ -25,13 +25,7 @@ background: transparent;
 }
 
 .alarm-expansion {
-  background: transparent;
-  background-color:#F5594C;
-  border-radius: 0px;
-
-  .hover{
-    background-color:#F5594C;
-  }
+  background: #F5594C !important;
 }
 
 .expansion{
@@ -39,8 +33,11 @@ background: transparent;
   border-radius: 0px;
 }
 
-.title-expansion {
-  text-align: center
+.title {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  
 }
 
 .mat-expansion-panel {
@@ -52,11 +49,16 @@ background: transparent;
 }
 
 .paginator {
-  background-color:#F5594C;
+  background: transparent;
 }
 
 .icon {
   color: white
+}
+
+img {
+	width: 40px;
+	height: 40px;
 }
 
 

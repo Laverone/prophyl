@@ -4,7 +4,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
-      <img src=".\img\rte_logo.png">
+      <img [src]="myimage">
     </mat-toolbar>
     <mat-nav-list>
       <button class="button"
@@ -30,17 +30,15 @@
     </mat-toolbar>
     <mat-expansion-panel class="expansion"  (opened)="panelOpenState = true"
                                             (closed)="panelOpenState = false">
-      <mat-expansion-panel-header class="alarm-expansion">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" class="alarm-expansion">
         <mat-panel-title>
         </mat-panel-title>
-          <mat-panel-title >
+          <mat-panel-title class="title" >
             <mat-icon>warning</mat-icon>
             4 nouvelles alarmes !
           </mat-panel-title>
           <mat-paginator class="paginator"[length]="5"
                          [pageSize]="5" >
-            
-
           </mat-paginator>
       </mat-expansion-panel-header>
         <cf-table-alarm></cf-table-alarm>

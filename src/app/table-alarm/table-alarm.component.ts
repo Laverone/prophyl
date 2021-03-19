@@ -30,6 +30,13 @@ export class TableAlarmComponent implements OnInit {
   data = Object.assign( ALARM_DATA);
   dataSource = new MatTableDataSource<AlarmElement>(ALARM_DATA);
   selection = new SelectionModel<AlarmElement>(true, []);
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   
 
   /** Whether the number of selected elements matches the total number of rows. */
