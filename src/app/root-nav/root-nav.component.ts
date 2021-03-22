@@ -27,6 +27,7 @@ export class RootNavComponent {
 
     click(){
     this.icon = !this.icon;
+    
   }
 
   myimage: string = "assets/img/rte_logo.png"
