@@ -1,13 +1,15 @@
 table {
-    width: 100%;
+    width: 100%
   }
   
   .mat-row:nth-child(even){
     background-color: #324999;
+    margin-left: 2%;
 }
         
 .mat-row:nth-child(odd){
     background-color: #334DA4;
+    margin-left: 2%;
 }
 
 .mat-header-row{
@@ -21,6 +23,7 @@ table {
 
 .button{
     display:inline-block;
+    margin-left: 2%;
 }
 
 h4 {

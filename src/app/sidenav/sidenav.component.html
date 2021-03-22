@@ -1,0 +1,18 @@
+<mat-sidenav class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <img [src]="myimage">
+    </mat-toolbar>
+    <mat-nav-list>
+      <button class="button"
+          mat-list-item [routerLink]="['']">
+        <mat-icon class="icon" aria-label="Side nav toggle icon">home</mat-icon>
+      </button>
+      <button class="button"
+          mat-list-item [routerLink]="['dashboard']">
+        <mat-icon class="icon" aria-label="Side nav toggle icon">assignment</mat-icon>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>

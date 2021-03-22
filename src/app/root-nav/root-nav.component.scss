@@ -1,67 +1,10 @@
-.sidenav-container {
-  height: 100%;
-}
 
-.sidenav {
-  width: 70px;
-  background-color:#2B3A9B;
-}
-
-.sidenav .mat-toolbar {
-  background: inherit;
-
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color:#242E72
-}
-
-.button {
-background: transparent;
-  border: none !important;
-}
-
-.alarm-expansion {
-  background: #F5594C !important;
-
-  top: 0;
-  width: 80%;
-}
-
-.expansion{
-  background-color: #334DA4;
-  border-radius: 0px;
-}
-
-.title {
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  
-}
-
-.mat-expansion-panel {
-  display: flex !important;
-  flex-direction: column;
-}
-.mat-expansion-panel-header {
-  order: 2;
-}
 
 .paginator {
   background: transparent;
 }
 
-.icon {
-  color: white
-}
 
-img {
-	width: 40px;
-	height: 40px;
-}
+
 
 

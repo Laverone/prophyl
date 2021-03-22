@@ -1,21 +1,14 @@
-import { Component, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import {MatPaginator} from '@angular/material/paginator';
-
 
 @Component({
-  selector: 'cf-root-nav',
-  templateUrl: './root-nav.component.html',
-  styleUrls: ['./root-nav.component.scss']
+  selector: 'cf-title',
+  templateUrl: './title.component.html',
+  styleUrls: ['./title.component.scss']
 })
-
-export class RootNavComponent {
-  @Input() test: any;
-
-  myimage: string = "assets/img/rte_logo.png"
-  
+export class TitleComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
@@ -25,7 +18,9 @@ export class RootNavComponent {
   
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit(): void {}
 
+
+  ngOnInit(): void {
+  }
 
 }

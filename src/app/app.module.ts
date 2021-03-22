@@ -19,6 +19,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { TableAlarmComponent } from './table-alarm/table-alarm.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { TitleComponent } from './title/title.component';
+import { AlarmComponent } from './alarm/alarm.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HomeComponent,
     DashboardComponent,
     RootNavComponent,
-    TableAlarmComponent
+    TableAlarmComponent,
+    SidenavComponent,
+    TitleComponent,
+    AlarmComponent
   ],
   imports: [
     BrowserModule,
