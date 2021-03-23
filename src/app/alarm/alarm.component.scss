@@ -4,6 +4,7 @@
     top: 0;
   }
   
+  
   .expansion{
     background-color: #334DA4;
     border-radius: 0px;
@@ -22,4 +23,8 @@
   }
   .mat-expansion-panel-header {
     order: 2;
+  }
+
+  .paginator {
+    background: transparent;
   }
