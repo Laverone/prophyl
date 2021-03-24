@@ -1,7 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 
 
@@ -11,16 +11,6 @@ export interface AlarmElement {
   message: string;
 }
 
-const ALARM_DATA: AlarmElement[] = [
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme commercial de IDx n'a pas été reçu."},
-  { date: '21/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme physique de IDx n'a pas été reçu."},
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "La demande de modification n°X n'a pas reçu de réponse. Elle est considérée comme acceptée"},
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Vous avez reçu une demande de modification de programme."},
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme commercial de IDx n'a pas été reçu."},
-  { date: '21/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme physique de IDx n'a pas été reçu."},
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "La demande de modification n°X n'a pas reçu de réponse. Elle est considérée comme acceptée"},
-  { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Vous avez reçu une demande de modification de programme."},
-];
 
 @Component({
   selector: 'cf-table-alarm',
@@ -29,10 +19,11 @@ const ALARM_DATA: AlarmElement[] = [
 })
 export class TableAlarmComponent implements OnInit {
 
+  @Input() alarms: AlarmElement[];
 
   displayedColumns: string[] = ['select','date', 'interconnexion', 'message'];
-  data = Object.assign( ALARM_DATA);
-  dataSource = new MatTableDataSource<AlarmElement>(ALARM_DATA);
+  data = Object.assign( alarms);
+  dataSource = new MatTableDataSource<AlarmElement>(alarms);
   selection = new SelectionModel<AlarmElement>(true, []);
   
 
