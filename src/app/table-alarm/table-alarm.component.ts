@@ -1,6 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -19,11 +20,18 @@ export interface AlarmElement {
 })
 export class TableAlarmComponent implements OnInit {
 
-  @Input() alarms: AlarmElement[];
+  ALARMS: AlarmElement[] = [
+    { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme commercial de IDx n'a pas été reçu."},
+    { date: '21/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme physique de IDx n'a pas été reçu."},
+    { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "La demande de modification n°X n'a pas reçu de réponse. Elle est considérée comme acceptée"},
+    { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Vous avez reçu une demande de modification de programme."},
+  ];
+
+  
 
   displayedColumns: string[] = ['select','date', 'interconnexion', 'message'];
-  data = Object.assign( alarms);
-  dataSource = new MatTableDataSource<AlarmElement>(alarms);
+  data = Object.assign( this.ALARMS);
+  dataSource = new MatTableDataSource<AlarmElement>(this.ALARMS);
   selection = new SelectionModel<AlarmElement>(true, []);
   
 
@@ -60,6 +68,9 @@ export class TableAlarmComponent implements OnInit {
   }
 
   constructor() { }
+  
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   ngOnInit(): void {
   }

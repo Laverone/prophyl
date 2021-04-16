@@ -15,7 +15,7 @@ export class AlarmComponent implements OnInit {
   customExpandedHeight: string = '45px';
   icon: boolean = false;
 
-  alarms: AlarmElement[] = [
+  ALARMS: AlarmElement[] = [
     { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme commercial de IDx n'a pas été reçu."},
     { date: '21/03/2019 07:08:00', interconnexion: 'IFA2', message: "Le programme physique de IDx n'a pas été reçu."},
     { date: '22/03/2019 07:08:00', interconnexion: 'IFA2', message: "La demande de modification n°X n'a pas reçu de réponse. Elle est considérée comme acceptée"},
@@ -28,22 +28,10 @@ export class AlarmComponent implements OnInit {
 
   paginator: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-ngAfterViewInit(): void {
-    this.paginator.page.subscribe(x => console.log(x));
-  }
-
-test() {
-    this.paginator.pageIndex =  alarms;
-  }
-
-  @Output()
-  page: EventEmitter<PageEvent> 
-
   click(){
     this.icon = !this.icon;
   }
+  
 
   constructor() { }
 
@@ -51,3 +39,5 @@ test() {
   }
 
 }
+
+

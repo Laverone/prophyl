@@ -1,0 +1,42 @@
+<div fxLayout="row" space-around="space-around center">
+    <mat-card class="empty-card"></mat-card>
+    <mat-card class="empty-card"></mat-card>
+    <mat-card class="no-card"></mat-card>
+    <mat-card class="no-card"></mat-card>
+    <mat-card class="card">
+        <button class="buttonTop" mat-flat-button disabled>Auto.</button>
+        <button class="buttonTop" mat-flat-button disabled>
+            <div class="material-icons">
+                hourglass_empty
+            </div>
+        </button>
+        <button class="buttonTop" mat-flat-button color="primary">
+            <div class="material-icons">
+                report_problem
+            </div>
+        </button>
+
+        <div class="titleCard">
+            <h1>Savoie - Piémont</h1>
+        </div>
+        <div>
+            <mat-horizontal-stepper>
+                <mat-step label="Grand-Ile">
+                </mat-step>
+                <mat-step label="Piossaco"></mat-step>
+            </mat-horizontal-stepper>
+        </div>
+        <div>
+            <mat-vertical-stepper>
+                <mat-step label="Réception"></mat-step>
+                <mat-step label="Traitement"></mat-step>
+                <mat-step label="Bouclage"></mat-step>
+                <mat-step label="Transfert"></mat-step>
+            </mat-vertical-stepper>
+        </div>
+        <button class="buttonBtm" mat-flat-button color="primary">
+            <div>Détails</div>
+        </button>
+    </mat-card>
+</div>
+

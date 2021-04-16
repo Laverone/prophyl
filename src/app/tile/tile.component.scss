@@ -1,0 +1,68 @@
+.empty-card {
+    background-color: transparent;
+    border-style: dashed;
+    border-color: #b3b8c7;
+    width: 22rem;
+    height: 24rem;
+    border-radius: 10px;
+    margin: 1rem;
+  }
+
+.no-card {
+    background-color: transparent;
+    width: 22rem;
+    height: 24rem;
+    margin: 1rem;
+    box-shadow: none;
+}
+
+.card {
+    background-color: #242E72;
+    width: 22rem;
+    height: 24rem;
+    border-radius: 10px;
+    margin: 1rem;
+  }
+
+  .buttonTop {
+    margin-left: 5px;
+    top: -16px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+  
+  .buttonBtm {
+    width: 24rem;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    padding-top: 27px;
+    padding-right: 27px;
+    margin-left: -16px;
+  }
+  
+  .titleCard {
+    color: #d9ddeb;
+    text-align: center
+  }
+  
+  mat-horizontal-stepper {
+    background-color: transparent;
+    color: #d9ddeb;
+  }
+  
+  mat-vertical-stepper {
+    background-color: transparent;
+    color: #d9ddeb;
+  }
+  
+  mat-stepper {
+    color: #d9ddeb;
+  }
+  
+  ::ng-deep.mat-step-header {
+    padding: 5px;
+  }

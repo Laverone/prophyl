@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'cf-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  mediaSub!: Subscription;
+  deviceXs!: boolean;
+  constructor(public mediaObserver:MediaObserver) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+      console.log(result.mqAlias);
+      this.deviceXs = result.mqAlias ==='xs' ? true : false;
+    })
+  }
+  ngOnDestroy() {
+    this.mediaSub.unsubscribe();
   }
 
 }

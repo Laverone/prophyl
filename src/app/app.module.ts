@@ -22,6 +22,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TitleComponent } from './title/title.component';
 import { AlarmComponent } from './alarm/alarm.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DigitalClockComponent } from './digital-clock/digital-clock.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { TileComponent } from './tile/tile.component';
+import { TileEmptyComponent } from './tile-empty/tile-empty.component';
+import {MatCardModule} from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 
 @NgModule({
@@ -33,7 +44,11 @@ import { AlarmComponent } from './alarm/alarm.component';
     TableAlarmComponent,
     SidenavComponent,
     TitleComponent,
-    AlarmComponent
+    AlarmComponent,
+    LoginComponent,
+    DigitalClockComponent,
+    TileComponent,
+    TileEmptyComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +64,13 @@ import { AlarmComponent } from './alarm/alarm.component';
     MatTableModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
